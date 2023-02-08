@@ -63,7 +63,7 @@ void HttpClientImpl::createTcpClient()
                 connPtr->setContext(
                     std::make_shared<HttpResponseParser>(connPtr));
                 // send request;
-                LOG_TRACE << "Connection established!";
+                LOG_INFO << "Connection established!";
                 while (thisPtr->pipeliningCallbacks_.size() <=
                            thisPtr->pipeliningDepth_ &&
                        !thisPtr->requestsBuffer_.empty())
@@ -77,7 +77,7 @@ void HttpClientImpl::createTcpClient()
             }
             else
             {
-                LOG_TRACE << "connection disconnect";
+                LOG_INFO << "connection disconnect";
                 auto responseParser = connPtr->getContext<HttpResponseParser>();
                 if (responseParser && responseParser->parseResponseOnClose() &&
                     responseParser->gotAll())
