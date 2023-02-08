@@ -96,6 +96,7 @@ void HttpClientImpl::createTcpClient()
                     }
                     return;
                 }
+                LOG_ERROR << "Network Failed";
                 thisPtr->onError(ReqResult::NetworkFailure);
             }
         });
@@ -567,6 +568,7 @@ void HttpClientImpl::handleResponse(
         {
             auto cb = std::move(pipeliningCallbacks_.front());
             pipeliningCallbacks_.pop();
+            LOG_ERROR << "Network Failed";
             cb.second(ReqResult::NetworkFailure, nullptr);
         }
     }
