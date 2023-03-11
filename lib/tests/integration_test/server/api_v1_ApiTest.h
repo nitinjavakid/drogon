@@ -88,6 +88,9 @@ class ApiTest : public drogon::HttpController<ApiTest>
         std::function<void(const HttpResponsePtr &)> &&callback);
     void echoBody(const HttpRequestPtr &req,
                   std::function<void(const HttpResponsePtr &)> &&callback);
+    void slowReply(const HttpRequestPtr &req,
+                  std::function<void(const HttpResponsePtr &)> &&callback,
+                  int seconds);
 
   public:
     ApiTest()
